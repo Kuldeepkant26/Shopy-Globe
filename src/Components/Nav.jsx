@@ -29,11 +29,14 @@ function Nav() {
                         <i className="ri-shopping-cart-2-fill"></i>
                         <p>{cart.length}</p>
                     </Link>
-                    <Link  className="options" to={'/search'} onClick={closeMenu}>
+                    <Link className="options" to={'/search'} onClick={closeMenu}>
                         <i className="ri-search-line"></i> Search
                     </Link>
                     <Link className="options" to={'/'} onClick={closeMenu}>
                         Home
+                    </Link>
+                    <Link className="options" to={'/signin'} onClick={closeMenu}>
+                        Signin <i className="ri-user-3-fill"></i>
                     </Link>
                 </div>
                 <i id="mnubtn" className="ri-menu-line" onClick={toggleMenu}></i>
