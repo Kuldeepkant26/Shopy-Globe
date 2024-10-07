@@ -37,6 +37,10 @@ form .pass {
     position: relative;
 }
 
+form p {
+    cursor: pointer;
+}
+
 form .pass i {
     position: absolute;
     right: 0px;

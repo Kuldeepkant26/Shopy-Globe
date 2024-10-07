@@ -29,15 +29,20 @@ function Nav() {
                         <i className="ri-shopping-cart-2-fill"></i>
                         <p>{cart.length}</p>
                     </Link>
-                    <Link className="options" to={'/search'} onClick={closeMenu}>
-                        <i className="ri-search-line"></i> Search
-                    </Link>
                     <Link className="options" to={'/'} onClick={closeMenu}>
                         Home
                     </Link>
-                    <Link className="options" to={'/signin'} onClick={closeMenu}>
-                        Signin <i className="ri-user-3-fill"></i>
+                    <Link className="options" to={'/search'} onClick={closeMenu}>
+                        <i className="ri-search-line"></i> Search
                     </Link>
+                    {!localStorage.getItem('sgauthtoken') ?
+                        <Link className="options" to={'/login'} onClick={closeMenu}>
+                            <i className="ri-user-3-fill"></i> Signin
+                        </Link> : <Link className='options' to={'/profile'}>
+                            <i className="ri-user-3-line"></i> Profile
+                        </Link>
+                    }
+
                 </div>
                 <i id="mnubtn" className="ri-menu-line" onClick={toggleMenu}></i>
             </nav>

@@ -7,7 +7,7 @@ function ProductList() {
     const [products, setProducts] = useState(null);
     async function fetchData() {
         try {                                                             //Error Handling
-            const res = await axios.get('https://dummyjson.com/products');
+            const res = await axios.get(`${import.meta.env.VITE_URL}/api/product/products`);
             setProducts(res.data.products)
         } catch (error) {
             alert('Error in Fetching data')
@@ -23,7 +23,7 @@ function ProductList() {
         <>
             {products ? <div className='w-full flex flex-wrap justify-evenly gap-4 items-center'>
                 {products.map((product) => {
-                    return <ProductCard key={product.id} product={product}></ProductCard>
+                    return <ProductCard key={product._id} product={product}></ProductCard>
                 })}
             </div> : <Loading />}
         </>

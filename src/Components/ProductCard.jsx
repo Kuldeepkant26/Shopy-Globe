@@ -1,5 +1,5 @@
-import React from 'react'
-import '../Css/ProductCard.css'
+import React from 'react';
+import '../Css/ProductCard.css';
 import { Link } from 'react-router-dom';
 import { additem, removeitem } from '../Utils/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,15 +15,15 @@ function ProductCard({ product }) {
     return (
         <div className='card'>
             <Link
-                to={`/show/${product.id}`}
+                to={`/show/${product._id}`}  // Changed from product.id to product._id
                 onClick={() => window.scrollBy({ top: -5000, behavior: 'smooth' })}
                 className="top"
             >
                 {/* Product Image */}
                 <div className="image-container">
-                    <img src={product.thumbnail} alt={product.title} className="product-image" />
+                    <img src={product.image} alt={product.title} className="product-image" />  {/* Changed to product.image */}
                 </div>
-                <p className="text-gray-700 rating"> {product.rating} ⭐</p>
+                <p className="text-gray-700 rating"> Stock: {product.stock} </p> {/* Added stock information */}
                 <p className='title'>{product.title}</p>
             </Link>
 
@@ -31,10 +31,11 @@ function ProductCard({ product }) {
                 <div className="left">
                     <p>{product.category}</p>
                     <p className='price'>${product.price}</p>
+                    <p className='description'>{product.description}</p>  {/* Added description */}
                 </div>
 
-                {!cart.includes(product.id) ? (
-                    <button className='viewbtn' onClick={() => addtocart(product.id)}>
+                {!cart.includes(product._id) ? (  // Changed from product.id to product._id
+                    <button className='viewbtn' onClick={() => addtocart(product._id)}>
                         Add <i className="ri-shopping-cart-line"></i>
                     </button>
                 ) : (
